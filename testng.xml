@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="ParaBankSuite">
+
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+    </listeners>
+
+    <test name="ParaBankTest">
+
+        <classes>
+
+            <class name="tests.RegisterAndLoginTest"/>
+
+        </classes>
+
+    </test>
+
+</suite>
