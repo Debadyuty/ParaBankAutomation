@@ -3,7 +3,6 @@ pipeline {
     agent any
 
     tools {
-        jdk 'JDK17'
         maven 'Maven3'
     }
 
@@ -12,7 +11,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/YOUR_GITHUB_USERNAME/ParaBankAutomation.git'
+                    url: 'https://github.com/Debadyuty/ParaBankAutomation.git'
             }
         }
 
@@ -28,7 +27,7 @@ pipeline {
             }
         }
 
-        stage('Execute TestNG Tests') {
+        stage('Execute Tests') {
             steps {
                 bat 'mvn test'
             }
@@ -36,7 +35,12 @@ pipeline {
 
         stage('Archive Reports') {
             steps {
-                archiveArtifacts artifacts: 'reports/**', fingerprint: true
+
+                archiveArtifacts artifacts: 'reports/**/*',
+                                 allowEmptyArchive: true
+
+                archiveArtifacts artifacts: 'screenshots/**/*',
+                                 allowEmptyArchive: true
             }
         }
     }
@@ -44,11 +48,11 @@ pipeline {
     post {
 
         success {
-            echo 'Automation Execution Successful'
+            echo 'ParaBank Automation Framework Executed Successfully'
         }
 
         failure {
-            echo 'Automation Execution Failed'
+            echo 'ParaBank Automation Framework Execution Failed'
         }
 
         always {
@@ -59,9 +63,8 @@ pipeline {
                 keepAll: true,
                 reportDir: 'reports',
                 reportFiles: 'ExtentReport.html',
-                reportName: 'Extent Report'
+                reportName: 'ParaBank Automation Report'
             ])
-
         }
     }
 }
