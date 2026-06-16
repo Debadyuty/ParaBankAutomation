@@ -3,6 +3,10 @@ pipeline {
     agent any
 
     tools {
+<<<<<<< HEAD
+=======
+        jdk 'JDK21'
+>>>>>>> bdb1ca6f2669fe2311098c526af32818b9eee013
         maven 'Maven3'
     }
 
@@ -11,7 +15,11 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 git branch: 'main',
+<<<<<<< HEAD
                     url: 'https://github.com/Debadyuty/ParaBankAutomation.git'
+=======
+                url: 'https://github.com/Debadyuty/ParaBankAutomation.git'
+>>>>>>> bdb1ca6f2669fe2311098c526af32818b9eee013
             }
         }
 
